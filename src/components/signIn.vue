@@ -5,7 +5,7 @@
     <h4>Password</h4>
     <input v-model="text" placeholder="password"/>
     <h2></h2>
-    <router-link to="">
+    <router-link to="/my-courses">
       <button>Sign In</button>
     </router-link>
   </div>
