@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>This is the courses page</h1>
-    <courseListingCard />
+    <router-link to="/courseId">
+      <courseListingCard class="course1" />
+    </router-link>
   </div>
 </template>
 <script lang="ts">
