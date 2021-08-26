@@ -30,8 +30,9 @@ const routes: Array<RouteConfig> = [
     component: MyCourses,
   },
   {
-    path: "/courseId",
-    name: "CourseId",
+    path: "/course/:id",
+    name: "CoursePage",
+    props: true,
     component: CourseListingPage,
   },
 ];

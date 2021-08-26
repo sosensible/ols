@@ -1,13 +1,11 @@
 <template>
   <div>
     <h1>This is the courses page</h1>
-    <router-link to="/courses/0 ">
       <courseListingCard
         v-for="course in courses"
-        :key="course.cid"
+        :key="course.id"
         :course="course"
       />
-    </router-link>
   </div>
 </template>
 <script lang="ts">
