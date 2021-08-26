@@ -6,12 +6,12 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import signIn from "../components/signIn.vue"
+import signIn from "../components/signIn.vue";
 
 @Component({
   components: {
-    signIn
-  }
+    signIn,
+  },
 })
 export default class Home extends Vue {}
 </script>
