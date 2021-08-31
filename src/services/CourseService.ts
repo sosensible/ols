@@ -12,9 +12,9 @@ createServer({
       shortDescription: "Hyper Text Markup Language Basics",
       price: 30,
       lessons: [
-        { name: "lesson 1" },
-        { name: "lesson 2" },
-        { name: "lesson 3" },
+        { name: "What is HTML" },
+        { name: "Getting Started" },
+        { name: "text tags" },
       ],
     });
     server.create("course", {
@@ -22,11 +22,10 @@ createServer({
       shortDescription: "Dont know what java stands for",
       price: 20,
       lessons: [
-        { name: "lesson 1" },
-        { name: "lesson 2" },
-        { name: "lesson 3" },
-        { name: "lesson 4" },
-        { name: "lesson 5" },
+        { name: "What is JAVA" },
+        { name: "java basics" },
+        { name: "java basic advanced" },
+        { name: "java advanced" },
       ],
     });
   },
