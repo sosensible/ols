@@ -5,9 +5,11 @@
     <h3>Price: ${{ course.price }}</h3>
     <!-- <p :v-for="lesson in course.lessons">this is a {{ lesson.name }}</p> -->
     <div class="lessonArray">
-      <p v-for="lesson in course.lessons" :key="lesson.name">
-        {{ lesson.name }}
-      </p>
+      <router-link to="course/lesson">
+        <p v-for="lesson in course.lessons" :key="lesson.name">
+          {{ lesson.name }}
+        </p>
+      </router-link>
     </div>
   </div>
 </template>
