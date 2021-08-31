@@ -9,9 +9,15 @@ describe("bob spec 3", () => {
   });
   it("click a lesson, route changes to course/lesson", () => {
     //write code that chekcs for route change on lesson click
-    cy.get('.lessonArray > :nth-child(1)')
+    cy.get(':nth-child(4) > a > p')
       .click()
 
-    cy.url().should("contain", "course/lesson");
+    cy.url().should("contain", "lesson");
+  });
+  it.only("checks that we are on course/lesson page", () => {
+    //write code to check we are on course lesson
+    cy.get(":nth-child(4) > a > p").click();
+
+    cy.contains("This Lessons Name")
   });
 });

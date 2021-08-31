@@ -4,9 +4,13 @@
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
     <!-- <p :v-for="lesson in course.lessons">this is a {{ lesson.name }}</p> -->
-    <div class="lessonArray">
-      <router-link to="course/lesson">
-        <p v-for="lesson in course.lessons" :key="lesson.name">
+    <div
+      class="lessonArray"
+      v-for="lesson in course.lessons"
+      :key="lesson.name"
+    >
+      <router-link :to="{ name: 'LessonPage', params: { name: lesson.name } }">
+        <p>
           {{ lesson.name }}
         </p>
       </router-link>
