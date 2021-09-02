@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/views/WelcomePage.vue", "src/views/C.vue", "src/views/Courses.vue", "src/components/CourseCard.vue", "src/server.ts"  ],
+, "src/views/WelcomePage.vue", "src/views/C.vue", "src/views/Courses.vue", "src/components/CourseCard.vue", "src/server.ts", "src/views/course/CourseCreationPage.vue", "src/views/course/CourseLesson.vue", "src/views/course/CourseListingPage.vue", "src/views/course/Courses.vue", "src/views/course/MyCourses.vue"  ],
   "exclude": [
     "node_modules"
   ]

@@ -9,8 +9,8 @@
   </div>
 </template>
 <script lang="ts">
-import courseListingCard from "../components/CourseCard.vue";
-import CourseService from "../services/CourseService";
+import courseListingCard from "../../components/CourseCard.vue";
+import CourseService from "../../services/CourseService";
 export default {
   components: {
     courseListingCard,
