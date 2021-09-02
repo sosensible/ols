@@ -21,7 +21,7 @@
 <script>
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import CourseService from "../services/CourseService";
+import CourseService from "../../services/CourseService";
 export default {
   props: ["id"],
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

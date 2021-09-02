@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Courses from "../views/Courses.vue";
+import Courses from "../views/course/Courses.vue";
 import Home from "../views/WelcomePage.vue";
 import SignIn from "../views/SignIn.vue";
-import MyCourses from "../views/MyCourses.vue";
-import CourseListingPage from "../views/CourseListingPage.vue";
-import CourseCreationPage from "../views/CourseCreationPage.vue";
-import CourseLesson from "../views/CourseLesson.vue";
+import MyCourses from "../views/course/MyCourses.vue";
+import CourseListingPage from "../views/course/CourseListingPage.vue";
+import CourseCreationPage from "../views/course/CourseCreationPage.vue";
+import CourseLesson from "../views/course/CourseLesson.vue";
 
 Vue.use(VueRouter);
 
