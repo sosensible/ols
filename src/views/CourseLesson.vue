@@ -1,8 +1,6 @@
 <template>
   <div class=".lessonContent">
-    <p class=".lessonName">
-      This Lessons Name: <em>{{ this.name }}</em>
-    </p>
+    <p class=".lessonName">This Lessons Name:</p>
   </div>
 </template>
 <script>
