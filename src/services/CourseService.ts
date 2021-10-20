@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios from "axios";
 import { createServer, Model } from "miragejs";
 
@@ -37,8 +36,12 @@ createServer({
     });
     this.get("/api/courses/:id", (schema, request) => {
       const id = request.params.id;
-
       return schema.courses.find(id);
+    });
+    this.post("/api/courses", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+      attrs.id = 4;
+      return { course: attrs };
     });
   },
 });
