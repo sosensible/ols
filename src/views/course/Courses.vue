@@ -10,7 +10,6 @@
 </template>
 <script lang="ts">
 import courseListingCard from "../../components/CourseCard.vue";
-import CourseService from "../../services/CourseService";
 export default {
   components: {
     courseListingCard,
@@ -22,7 +21,9 @@ export default {
   computed: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     courses() {
-      return this.$store.state.courses;
+      const courses = this.$store.state.courses;
+      console.log(courses);
+      return courses;
     },
   },
 };

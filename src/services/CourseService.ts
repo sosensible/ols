@@ -38,9 +38,10 @@ createServer({
       const id = request.params.id;
       return schema.courses.find(id);
     });
+    let newId = 4;
     this.post("/api/courses", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
-      attrs.id = 4;
+      attrs.id = newId++;
       return { course: attrs };
     });
   },

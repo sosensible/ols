@@ -32,7 +32,7 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
-    CourseService.getCourse(this.id)
+    CourseService.getCourse(this.$store.state.selectedCourseId)
       .then(({ data }) => {
         this.course = data.course;
       })

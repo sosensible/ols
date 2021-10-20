@@ -23,10 +23,7 @@ export default {
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     submit() {
-      axios.post("/api/courses", {
-        name: this.course.name,
-        shortDescription: this.course.description,
-      });
+      this.$store.dispatch("createCourse", this.course);
     },
   },
   computed: {

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import CourseService from "../services/CourseService"
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -12,10 +12,14 @@ export default new Vuex.Store({
     },
     courses: [],
     error: null,
+    selectedCourseId: 0,
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
+    },
+    setCurrentCourseId(state, id) {
+      state.selectedCourseId = id;
     },
     setCourses(state, courses) {
       state.courses = courses;
@@ -23,13 +27,22 @@ export default new Vuex.Store({
     setError(state, error) {
       state.error = error;
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    addCourse(state, course) {
+      state.courses.push();
+      console.log(state.courses);
+    },
   },
   actions: {
     createUser({ commit }, user) {
       commit("setUser", user);
     },
+    createCourseId({ commit }, id) {
+      commit("setCurrentCourseId", id);
+    },
     createCourses({ commit }) {
-      CourseService.getCourses()
+      axios
+        .get("/api/courses/")
         .then(({ data }) => {
           commit("setCourses", data.courses);
         })
@@ -37,6 +50,25 @@ export default new Vuex.Store({
           commit("setError", error);
         });
     },
+    createCourse({ commit }, course) {
+      axios
+        .post("/api/courses", {
+          id: 49,
+          name: course.name,
+          shortDescription: course.description,
+        })
+        .then(() => {
+          commit("addCourse", course);
+        })
+        .catch((error) => {
+          commit("setError", error);
+        });
+    },
   },
   modules: {},
+  getters: {
+    getCourseById: (state) => (id) => {
+      return state.courses.find(course => course.id === id)
+    },
+  },
 });
