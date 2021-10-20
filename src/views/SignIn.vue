@@ -1,23 +1,30 @@
 <template>
   <div>
     <h1>Sign in</h1>
-    <signIn />
+    <label for="name" class="form-label">Username</label>
+    <input id="name" v-model="user.name" class="form-control" />
+    <label for="password" class="form-label">Password</label>
+    <input id="password" v-model="user.password" class="form-control" />
+    <button :disabled="false" @click.prevent="setUser">Sign in</button>
   </div>
 </template>
 <script lang="ts">
-import signIn from "../components/signIn.vue";
 export default {
-  components: {
-    signIn,
-  },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
     return {
-      name: "George",
+      user: {
+        password: "",
+        name: "",
+      },
     };
   },
   methods: {
-    signIn() {
-      return axios.post("/api/users" + this.name)
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    setUser() {
+      console.log(this.user);
+      this.$store.dispatch("createUser", this.user);
+      this.$router.push("/my-courses");
     },
   },
 };
