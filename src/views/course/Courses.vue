@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>This is the courses page</h1>
-      <courseListingCard
-        v-for="course in courses"
-        :key="course.id"
-        :course="course"
-      />
+    <courseListingCard
+      v-for="course in courses"
+      :key="course.id"
+      :course="course"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -16,20 +16,14 @@ export default {
     courseListingCard,
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  data() {
-    return {
-      courses: [],
-    };
-  },
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
-    CourseService.getCourses()
-      .then(({ data }) => {
-        this.courses = data.courses;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch("createCourses");
+  },
+  computed: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    courses() {
+      return this.$store.state.courses;
+    },
   },
 };
 </script>
