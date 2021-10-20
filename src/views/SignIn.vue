@@ -5,13 +5,20 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
 import signIn from "../components/signIn.vue";
-
-@Component({
+export default {
   components: {
     signIn,
   },
-})
-export default class Home extends Vue {}
+  data() {
+    return {
+      name: "George",
+    };
+  },
+  methods: {
+    signIn() {
+      return axios.post("/api/users" + this.name)
+    },
+  },
+};
 </script>
