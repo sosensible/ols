@@ -9,7 +9,6 @@
   </form>
 </template>
 <script>
-import axios from "axios";
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {

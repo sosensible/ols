@@ -4,6 +4,7 @@
     <h1>{{ course.name }}</h1>
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
+    <!-- <p :v-for="lesson in course.lessons">this is a {{ lesson.name }}</p> -->
     <div
       class="lessonArray"
       v-for="lesson in course.lessons"
@@ -18,6 +19,9 @@
   </div>
 </template>
 <script>
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import CourseService from "../../services/CourseService";
 export default {
   props: ["id"],
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

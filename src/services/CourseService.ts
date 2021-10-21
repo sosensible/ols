@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createServer, Model } from "miragejs";
 
 createServer({
@@ -46,13 +45,3 @@ createServer({
     });
   },
 });
-const apiClient = axios.create({});
-
-export default {
-  getCourses() {
-    return apiClient.get("/api/courses/");
-  },
-  getCourse(id) {
-    return apiClient.get("/api/courses/" + id);
-  },
-};

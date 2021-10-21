@@ -29,8 +29,7 @@ export default new Vuex.Store({
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addCourse(state, course) {
-      state.courses.push();
-      console.log(state.courses);
+      state.courses.push(course);
     },
   },
   actions: {
@@ -52,8 +51,7 @@ export default new Vuex.Store({
     },
     createCourse({ commit }, course) {
       axios
-        .post("/api/courses", {
-          id: 49,
+        .post("/api/courses/", {
           name: course.name,
           shortDescription: course.description,
         })

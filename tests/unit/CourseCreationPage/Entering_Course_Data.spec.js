@@ -1,19 +1,15 @@
 import CourseCreationPage from "../../../src/views/course/CourseCreationPage.vue";
 import { render, screen } from "@testing-library/vue";
+import { createLocalVue } from "@vue/test-utils";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
-import store from "../../../src/store/index";
 
 describe("Entering Course Data", () => {
   let saveCourseButton, courseNameInput, CourseDescriptionInput;
   const setup = () => {
-    render(CourseCreationPage, {
-      global: {
-        plugins: [store],
-      },
-    });
+    render(CourseCreationPage);
     saveCourseButton = screen.queryByRole("button", { name: "Save Course" });
     courseNameInput = screen.queryByLabelText("Name");
     CourseDescriptionInput = screen.queryByLabelText("Description");
