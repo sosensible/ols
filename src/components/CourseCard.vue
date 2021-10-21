@@ -17,10 +17,9 @@ export default Vue.extend({
     },
   },
   methods: {
-    //
     submit() {
-      this.$store.dispatch("createCourseId", this.course.id);
-      console.log(this.$store.state.selectedCourseId);
+      this.$store.dispatch("createCurrentCourse", this.course);
+      console.log(this.$store.state.selectedCourse, "curre t course");
       this.$router.push("/course/" + this.course.id);
     },
   },

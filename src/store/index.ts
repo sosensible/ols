@@ -12,14 +12,14 @@ export default new Vuex.Store({
     },
     courses: [],
     error: null,
-    selectedCourseId: 0,
+    selectedCourse: {},
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
     },
-    setCurrentCourseId(state, id) {
-      state.selectedCourseId = id;
+    setCurrentCourse(state, course) {
+      state.selectedCourse = course;
     },
     setCourses(state, courses) {
       state.courses = courses;
@@ -37,8 +37,8 @@ export default new Vuex.Store({
     createUser({ commit }, user) {
       commit("setUser", user);
     },
-    createCourseId({ commit }, id) {
-      commit("setCurrentCourseId", id);
+    createCurrentCourse({ commit }, course) {
+      commit("setCurrentCourse", course);
     },
     createCourses({ commit }) {
       axios
@@ -66,9 +66,4 @@ export default new Vuex.Store({
     },
   },
   modules: {},
-  getters: {
-    getCourseById: (state) => (id) => {
-      return state.courses.find(course => course.id === id)
-    },
-  },
 });
