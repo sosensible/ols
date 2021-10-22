@@ -34,6 +34,7 @@ export default {
         }
         this.user.courses = usersCourses;
         this.$store.dispatch("createUser", this.user);
+        console.log(this.$store.state.user.courses);
         this.$router.push("/my-courses");
       }
     },
