@@ -16,15 +16,26 @@ export default {
       user: {
         password: "",
         name: "",
+        courses: "",
       },
     };
   },
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     setUser() {
-      console.log(this.user);
-      this.$store.dispatch("createUser", this.user);
-      this.$router.push("/my-courses");
+      const usersCourses = [];
+      if (this.$store.state.courses.length == 0) {
+        this.$store.dispatch("createCourses");
+      } else {
+        for (let i = 0; i < this.$store.state.courses.length; i++) {
+          if (this.$store.state.courses[i].creator == this.user.name) {
+            usersCourses.push(this.$store.state.courses[i]);
+          }
+        }
+        this.user.courses = usersCourses;
+        this.$store.dispatch("createUser", this.user);
+        this.$router.push("/my-courses");
+      }
     },
   },
 };

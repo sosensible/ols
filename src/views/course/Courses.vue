@@ -22,7 +22,6 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     courses() {
       const courses = this.$store.state.courses;
-      console.log(courses);
       return courses;
     },
   },

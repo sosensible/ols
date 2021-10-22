@@ -2,13 +2,24 @@
   <div>
     <h1>This page is for courses that were created by this user</h1>
     <h3>name: {{ user.name }}</h3>
+    <div>
+      <courseListingCard
+        v-for="course in user.courses"
+        :key="course.id"
+        :course="course"
+      />
+    </div>
     <router-link to="/new-course">
       <button>Create New Course</button>
     </router-link>
   </div>
 </template>
 <script>
+import courseListingCard from "../../components/CourseCard.vue";
 export default {
+  components: {
+    courseListingCard,
+  },
   computed: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     user() {

@@ -9,6 +9,7 @@ export default new Vuex.Store({
     user: {
       name: "",
       password: "",
+      courses: [],
     },
     courses: [],
     error: null,
@@ -31,8 +32,14 @@ export default new Vuex.Store({
     addCourse(state, course) {
       state.courses.push(course);
     },
+    addCoursesToUser(state, courses) {
+      state.user.courses.push(courses);
+    },
   },
   actions: {
+    addUsersCourse({ commit }, courses) {
+      commit("addCoursesToUser", courses);
+    },
     createUser({ commit }, user) {
       commit("setUser", user);
     },
@@ -64,4 +71,9 @@ export default new Vuex.Store({
     },
   },
   modules: {},
+  getters: {
+    getCourseByUser: (state) => () => {
+      return state.courses;
+    },
+  },
 });
