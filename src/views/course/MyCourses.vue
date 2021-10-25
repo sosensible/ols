@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>This page is for courses that were created by this user</h1>
+    <h2>This page is for courses that were created by this user</h2>
     <h3>name: {{ user.name }}</h3>
-    <div>
+    <div class="cards">
       <courseListingCard
         v-for="course in user.courses"
         :key="course.id"

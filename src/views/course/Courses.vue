@@ -1,12 +1,14 @@
 <template>
   <div>
     <h1>This is the courses page</h1>
-    <courseListingCard
-      v-for="course in courses"
-      :key="course.id"
-      :course="course"
-      class="card"
-    />
+    <div class="cards">
+      <courseListingCard
+        v-for="course in courses"
+        :key="course.id"
+        :course="course"
+        class="card"
+      />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -31,10 +33,15 @@ export default {
 };
 </script>
 <style>
+.cards {
+  display: grid;
+  margin: 30px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
 .card {
-  padding: 10px;
-  margin: 23px;
-  display: flex;
-  flex-flow: column;
+  margin: 30px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  grid-column: 4;
 }
 </style>

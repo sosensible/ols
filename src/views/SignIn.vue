@@ -1,11 +1,21 @@
 <template>
-  <div>
-    <h1>Sign in</h1>
-    <label for="name" class="form-label">Username</label>
-    <input id="name" v-model="user.name" class="form-control" />
-    <label for="password" class="form-label">Password</label>
-    <input id="password" v-model="user.password" class="form-control" />
-    <button :disabled="false" @click.prevent="setUser">Sign in</button>
+  <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+    <form class="card mt-5">
+      <div class="card-header">
+        <h1>Sign in</h1>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="name">Username</label>
+          <input id="name" v-model="user.name" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input id="password" v-model="user.password" class="form-control" />
+        </div>
+        <button :disabled="false" @click.prevent="setUser">Sign in</button>
+      </div>
+    </form>
   </div>
 </template>
 <script lang="ts">
