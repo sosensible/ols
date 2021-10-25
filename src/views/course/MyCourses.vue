@@ -7,6 +7,7 @@
         v-for="course in user.courses"
         :key="course.id"
         :course="course"
+        class="card"
       />
     </div>
     <router-link to="/new-course">

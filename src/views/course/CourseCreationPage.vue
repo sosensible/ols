@@ -4,7 +4,7 @@
     <label for="Name">Name</label>
     <input id="Name" v-model="course.name" />
     <label for="Description">Description</label>
-    <input id="Description" v-model="course.description" />
+    <input id="Description" v-model="course.shortDescription" />
     <label for="Price">Price</label>
     <input id="Price" v-model="course.price" type="number" />
     <button :disabled="disbled" @click.prevent="submit">Save Course</button>
@@ -17,14 +17,18 @@ export default {
     return {
       course: {
         name: "",
-        description: "",
+        shortDescription: "",
         price: "",
+        creator: "",
+        lessons: [],
+        id: 0,
       },
     };
   },
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     submit() {
+      this.course.creator = this.$store.state.user.name;
       this.$store.dispatch("createCourse", this.course);
       this.$router.push("my-courses");
     },

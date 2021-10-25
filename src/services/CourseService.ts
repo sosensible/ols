@@ -14,7 +14,7 @@ createServer({
       courses: [],
     });
     server.create("course", {
-      id: "4",
+      id: "3",
       name: "HTML basic",
       shortDescription: "Hyper Text Markup Language Basics",
       price: 30,

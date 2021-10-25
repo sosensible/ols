@@ -5,6 +5,7 @@
       v-for="course in courses"
       :key="course.id"
       :course="course"
+      class="card"
     />
   </div>
 </template>
@@ -16,7 +17,9 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
-    this.$store.dispatch("createCourses");
+    if (this.$store.state.courses.length == 0) {
+      this.$store.dispatch("createCourses");
+    }
   },
   computed: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -27,3 +30,11 @@ export default {
   },
 };
 </script>
+<style>
+.card {
+  padding: 10px;
+  margin: 23px;
+  display: flex;
+  flex-flow: column;
+}
+</style>
