@@ -1,18 +1,18 @@
 import CourseCreationPage from "../../../src/views/course/CourseCreationPage.vue";
 import { render, screen } from "@testing-library/vue";
-import { createLocalVue } from "@vue/test-utils";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
 
 describe("Entering Course Data", () => {
-  let saveCourseButton, courseNameInput, CourseDescriptionInput;
+  let saveCourseButton, courseNameInput, CourseDescriptionInput, priceInput;
   const setup = () => {
     render(CourseCreationPage);
     saveCourseButton = screen.queryByRole("button", { name: "Save Course" });
     courseNameInput = screen.queryByLabelText("Name");
     CourseDescriptionInput = screen.queryByLabelText("Description");
+    priceInput = screen.queryByLabelText("Price");
   };
   it("has Create New Course Header", () => {
     setup();
@@ -39,16 +39,22 @@ describe("Entering Course Data", () => {
     setup();
     await userEvent.type(courseNameInput, "HTML Basics");
     await userEvent.type(CourseDescriptionInput, "Html Course Description");
+    await userEvent.type(priceInput, "40");
     expect(saveCourseButton).toBeEnabled();
   });
-  it("does not enable if description is not filled", async () => {
+  it("does not enable if description and priceis not filled", async () => {
     setup();
     await userEvent.type(courseNameInput, "HTML Basics");
     expect(saveCourseButton).toBeDisabled();
   });
-  it("does not enable if name is not filled", async () => {
+  it("does not enable if name and price is not filled", async () => {
     setup();
     await userEvent.type(CourseDescriptionInput, "Html Course Description");
+    expect(saveCourseButton).toBeDisabled();
+  });
+  it("does not enable if name and descrption is not filled", async () => {
+    setup();
+    await userEvent.type(priceInput, "40");
     expect(saveCourseButton).toBeDisabled();
   });
   xit("sends name and description to backend after clicking button", async () => {

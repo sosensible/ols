@@ -28,7 +28,6 @@ export default new Vuex.Store({
     setError(state, error) {
       state.error = error;
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addCourse(state, course) {
       state.courses.push(course);
       state.user.courses.push(course);

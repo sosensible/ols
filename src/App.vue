@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1 class="header m-4">Open Learing Server</h1>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/courses">Courses</router-link> |

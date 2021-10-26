@@ -5,7 +5,7 @@
         <h1>Sign in</h1>
       </div>
       <div class="card-body">
-        <div class="form-group">
+        <div class="mb-3">
           <label for="name">Username</label>
           <input id="name" v-model="user.name" class="form-control" />
         </div>
@@ -44,7 +44,6 @@ export default {
         }
         this.user.courses = usersCourses;
         this.$store.dispatch("createUser", this.user);
-        console.log(this.$store.state.user.courses);
         this.$router.push("/my-courses");
       }
     },

@@ -1,6 +1,6 @@
 <template>
   <button @click.prevent="submit">
-    <div>
+    <div class="container p-5">
       <h3><em>Name:</em> {{ course.name }}</h3>
       <p>Description: {{ course.shortDescription }}</p>
       <h4>Price: ${{ course.price }}</h4>
@@ -15,11 +15,11 @@ export default Vue.extend({
       type: Object,
       required: true,
     },
+    // eslint-disable-next-line vue/require-prop-type-constructor
   },
   methods: {
     submit() {
       this.$store.dispatch("createCurrentCourse", this.course);
-      console.log(this.$store.state.selectedCourse, "curre t course");
       this.$router.push("/course/" + this.course.id);
     },
   },

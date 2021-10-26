@@ -1,14 +1,35 @@
 <template>
-  <form>
-    <h1>Create New Course</h1>
-    <label for="Name">Name</label>
-    <input id="Name" v-model="course.name" />
-    <label for="Description">Description</label>
-    <input id="Description" v-model="course.shortDescription" />
-    <label for="Price">Price</label>
-    <input id="Price" v-model="course.price" type="number" />
-    <button :disabled="disbled" @click.prevent="submit">Save Course</button>
-  </form>
+  <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+    <form>
+      <div class="card-header">
+        <h1>Create New Course</h1>
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Name</label>
+          <input id="Name" v-model="course.name" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="Description" class="form-label">Description</label>
+          <input
+            id="Description"
+            v-model="course.shortDescription"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Price" class="form-label">Price</label>
+          <input
+            id="Price"
+            v-model="course.price"
+            type="number"
+            class="form-control"
+          />
+        </div>
+        <button :disabled="disbled" @click.prevent="submit">Save Course</button>
+      </div>
+    </form>
+  </div>
 </template>
 <script>
 export default {
@@ -35,7 +56,11 @@ export default {
   },
   computed: {
     disbled() {
-      return !(this.course.name != "" && this.course.description != "");
+      return !(
+        this.course.name != "" &&
+        this.course.description != "" &&
+        this.course.price != ""
+      );
     },
   },
 };

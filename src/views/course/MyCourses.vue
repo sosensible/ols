@@ -11,7 +11,7 @@
       />
     </div>
     <router-link to="/new-course">
-      <button>Create New Course</button>
+      <button class="m-5">Create New Course</button>
     </router-link>
   </div>
 </template>
