@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 <template>
   <div>
+    <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
+      <button v-if="editButton">edit</button>
+    </router-link>
     <h1>{{ course.name }}</h1>
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
@@ -28,11 +31,16 @@ export default {
   data() {
     return {
       course: null,
+      editButton: false,
     };
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
     this.course = this.$store.state.selectedCourse;
+    const user = this.$store.state.user;
+    if (this.course.creator === user.name) {
+      this.editButton = true;
+    }
   },
 };
 </script>
