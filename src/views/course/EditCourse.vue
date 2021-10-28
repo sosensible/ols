@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h2>Edit Course</h2>
-    <h4>{{ course.name }}</h4>
-    <p>{{ course.shortDescription }}</p>
-    <p>${{ course.price }}</p>
-    <!-- <p :v-for="unit in course.units">{{ unit.name }}</p> -->
-    <button @click="addUnit">Add Unit</button>
-    <div v-if="addingUnit">
-      <div class="mb-3">
-        <label for="Unit Name">Unit Name</label>
-        <input id="unitName" class="form-control" />
-      </div>
-      <button>Save Unit</button>
+    <h2>Add Unit</h2>
+    <p v-for="unit in course.units" :key="unit.name">{{ unit.name }}</p>
+    <div class="form-floating mb-3">
+      <input
+        id="unitName"
+        class="form-control"
+        type="text"
+        v-model="unit.name"
+      />
+      <label for="unitName">Unit Name</label>
+      <button @click="saveUnit">Save Unit</button>
     </div>
+    <p>{{ unit }}</p>
   </div>
 </template>
 <script>
@@ -21,18 +21,23 @@ export default {
   data() {
     return {
       course: {},
-      addingUnit: false,
+      unit: {
+        name: "",
+        slug: "",
+      },
     };
   },
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    addUnit() {
-      this.addingUnit = !this.addingUnit;
+    saveUnit() {
+      if (this.unit.name != "") {
+        this.$store.dispatch("addUnitToCourse", this.unit);
+        this.$router.push("/course/" + this.course.id);
+      }
     },
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
-    console.log(this.$store.state.selectedCourse);
     this.course = this.$store.state.selectedCourse;
   },
 };

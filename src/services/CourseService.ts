@@ -19,7 +19,7 @@ createServer({
       shortDescription: "Hyper Text Markup Language Basics",
       price: 30,
       creator: "George",
-      lessons: [
+      units: [
         { name: "What is HTML", slug: "what_is_html" },
         { name: "Getting Started", slug: "getting_started" },
         { name: "text tags", slug: "text_tags" },
@@ -31,7 +31,7 @@ createServer({
       shortDescription: "Dont know what java stands for",
       price: 20,
       creator: "Duelvin",
-      lessons: [
+      units: [
         { name: "What is JAVA", slug: "what_is_java" },
         { name: "java basics", slug: "java_basics" },
         { name: "java basic advanced", slug: "java_basic_advanced" },

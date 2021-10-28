@@ -19,6 +19,9 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
+    addUnitToSelectedCourse(state, unit) {
+      state.selectedCourse.units.push(unit);
+    },
     setCurrentCourse(state, course) {
       state.selectedCourse = course;
     },
@@ -34,6 +37,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    addUnitToCourse({ commit }, unit) {
+      //need to add unit to the api
+      commit("addUnitToSelectedCourse", unit);
+    },
     createUser({ commit }, user) {
       commit("setUser", user);
     },

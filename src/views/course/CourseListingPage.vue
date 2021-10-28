@@ -1,18 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 <template>
   <div>
-    <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
-      <button v-if="editButton">edit</button>
-    </router-link>
     <h1>{{ course.name }}</h1>
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
-    <!-- <p :v-for="lesson in course.lessons">this is a {{ lesson.name }}</p> -->
-    <div
-      class="lessonArray"
-      v-for="lesson in course.lessons"
-      :key="lesson.name"
-    >
+    <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
+      <button v-if="editButton">Add Unit</button>
+    </router-link>
+    <div class="lessonArray" v-for="lesson in course.units" :key="lesson.name">
       <router-link :to="{ name: 'LessonPage', params: { name: lesson.slug } }">
         <p>
           {{ lesson.name }}
