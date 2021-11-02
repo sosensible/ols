@@ -12,7 +12,6 @@
       <label for="unitName">Unit Name</label>
       <button @click="saveUnit">Save Unit</button>
     </div>
-    <p>{{ unit }}</p>
   </div>
 </template>
 <script>

@@ -32,8 +32,9 @@
   </div>
 </template>
 <script>
-export default {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+import axios from "axios";
+import Vue from "vue";
+export default Vue.extend({
   data() {
     return {
       course: {
@@ -48,9 +49,14 @@ export default {
   },
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    submit() {
+    async submit() {
       this.course.creator = this.$store.state.user.name;
       this.$store.dispatch("createCourse", this.course);
+      // await axios.post("/api/courses/", {
+      //   name: this.course.name,
+      //   shortDescription: this.course.shortDescription,
+      //   price: this.course.price,
+      // });
       this.$router.push("my-courses");
     },
   },
@@ -63,5 +69,5 @@ export default {
       );
     },
   },
-};
+})
 </script>
