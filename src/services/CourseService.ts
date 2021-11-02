@@ -53,5 +53,10 @@ createServer({
       attrs.id = newId++;
       return { course: attrs };
     });
+    this.patch("/api/courses/:id", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+      const id = request.params.id;
+      return schema.courses.find(id).update(attrs);
+    });
   },
 });

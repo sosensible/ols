@@ -37,9 +37,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    addUnitToCourse({ commit }, unit) {
+    async addUnitToCourse({ commit }, unit) {
       //need to add unit to the api
-      commit("addUnitToSelectedCourse", unit);
+      console.log("add unit to course action");
+      await commit("addUnitToSelectedCourse", unit);
+      axios
+        .patch(
+          "/api/courses/" + this.state.selectedCourse.id,
+          this.state.selectedCourse.units
+        )
+        .catch((error) => {
+          commit("setError", error);
+        });
     },
     createUser({ commit }, user) {
       commit("setUser", user);
@@ -63,8 +72,7 @@ export default new Vuex.Store({
           course,
         })
         .then((reponse) => {
-          course.id = reponse.data.course.id,
-          commit("addCourse", course);
+          (course.id = reponse.data.course.id), commit("addCourse", course);
         })
         .catch((error) => {
           commit("setError", error);
