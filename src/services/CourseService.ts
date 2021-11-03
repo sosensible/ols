@@ -21,8 +21,20 @@ createServer({
       creator: "George",
       units: [
         { name: "What is HTML", slug: "what_is_html" },
-        { name: "Getting Started", slug: "getting_started" },
-        { name: "text tags", slug: "text_tags" },
+        {
+          name: "Getting Started",
+          slug: "getting_started",
+          lessons: [{ name: "Lesson One" }, { name: "Lesson Two" }],
+        },
+        {
+          name: "text tags",
+          slug: "text_tags",
+          lessons: [
+            { name: "Lesson One" },
+            { name: "Lesson Two" },
+            { name: "Lesson Three" },
+          ],
+        },
       ],
     });
     server.create("course", {
