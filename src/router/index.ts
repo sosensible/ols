@@ -6,7 +6,7 @@ import SignIn from "../views/SignIn.vue";
 import MyCourses from "../views/course/MyCourses.vue";
 import CourseListingPage from "../views/course/CourseListingPage.vue";
 import CourseCreationPage from "../views/course/CourseCreationPage.vue";
-import CourseLesson from "../views/course/CourseLesson.vue";
+import CourseUnit from "../views/course/CourseUnit.vue";
 import EditCourse from "../views/course/EditCourse.vue";
 
 Vue.use(VueRouter);
@@ -39,10 +39,10 @@ const routes: Array<RouteConfig> = [
     component: CourseListingPage,
   },
   {
-    path: "/lesson/:name",
-    name: "LessonPage",
+    path: "/unit/:slug",
+    name: "UnitPage",
     props: true,
-    component: CourseLesson,
+    component: CourseUnit,
   },
   {
     path: "/new-course",

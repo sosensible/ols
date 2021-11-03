@@ -7,12 +7,8 @@
     <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
       <button v-if="editButton">Add Unit</button>
     </router-link>
-    <div class="lessonArray" v-for="lesson in course.units" :key="lesson.name">
-      <router-link :to="{ name: 'LessonPage', params: { name: lesson.slug } }">
-        <p>
-          {{ lesson.name }}
-        </p>
-      </router-link>
+    <div v-for="unit in course.units" :key="unit.name">
+      <button @click.prevent="submit(unit)">{{ unit.name }}</button>
     </div>
   </div>
 </template>
@@ -36,6 +32,15 @@ export default {
     if (this.course.creator === user.name) {
       this.editButton = true;
     }
+  },
+  methods: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    submit(unit) {
+      this.$router.push({
+        name: "UnitPage",
+        params: { unit: unit },
+      });
+    },
   },
 };
 </script>
