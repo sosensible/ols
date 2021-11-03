@@ -23,10 +23,14 @@
       </div>
     </div>
     <h4>Lessons</h4>
+    <button v-if="edit">Add Lesson</button>
     <ul>
-      <li v-for="lesson in selectedUnit.lessons" :key="lesson.name">
-        {{ lesson.name }}
-      </li>
+      <div v-for="lesson in selectedUnit.lessons" :key="lesson.name">
+        <li>
+          {{ lesson.name }}
+        </li>
+        <button>✎</button>
+      </div>
     </ul>
   </div>
 </template>
