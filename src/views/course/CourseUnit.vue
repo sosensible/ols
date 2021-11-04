@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="edit">Edit Unit</button>
+    <button v-if="showEditButton" @click="show">Edit Unit</button>
     <h2>{{ selectedUnit.name }}</h2>
     <div v-if="edit">
       <div class="form-floating mb-3">
@@ -29,7 +29,7 @@
         <li>
           {{ lesson.name }}
         </li>
-        <button>✎</button>
+        <button v-if="edit">✎</button>
       </div>
     </ul>
   </div>
@@ -45,14 +45,20 @@ export default {
         lessons: [{ name: "" }],
       },
       edit: false,
+      showEditButton: false,
     };
+  },
+  methods: {
+    show() {
+      this.edit = !this.edit;
+    },
   },
   created() {
     this.selectedUnit = this.$props.unit;
     const course = this.$store.state.selectedCourse;
     const user = this.$store.state.user;
     if (course.creator === user.name) {
-      this.edit = true;
+      this.showEditButton = true;
     }
   },
 };
