@@ -46,7 +46,6 @@ export default {
         lessons: [{ name: "" }],
       },
       edit: false,
-      showEditButton: false,
     };
   },
   methods: {
@@ -64,6 +63,7 @@ export default {
           unitSlug: unitSlug,
           lessonSlug: lessonSlug,
           lesson: lesson,
+          canEdit: this.$props.canEdit,
         },
       });
     },
