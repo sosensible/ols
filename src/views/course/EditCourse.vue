@@ -10,8 +10,8 @@
         v-model="unit.name"
       />
       <label for="unitName">Unit Name</label>
-      <button @click="saveUnit">Save Unit</button>
     </div>
+    <button @click="saveUnit">Save Unit</button>
   </div>
 </template>
 <script>

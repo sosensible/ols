@@ -9,6 +9,7 @@ import CourseCreationPage from "../views/course/CourseCreationPage.vue";
 import CourseUnit from "../views/course/Unit.vue";
 import CourseLesson from "../views/course/Lesson.vue";
 import EditCourse from "../views/course/EditCourse.vue";
+import AddLesson from "../views/course/AddLesson.vue";
 
 Vue.use(VueRouter);
 
@@ -60,6 +61,12 @@ const routes: Array<RouteConfig> = [
     path: "/editCourse/:id",
     name: "EditCourseLesson",
     component: EditCourse,
+  },
+  {
+    path: "/course/:id/:unitSlug/addLesson",
+    name: "AddLesson",
+    props: true,
+    component: AddLesson,
   },
 ];
 

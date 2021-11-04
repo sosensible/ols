@@ -23,7 +23,7 @@
       </div>
     </div>
     <h4>Lessons</h4>
-    <button v-if="edit">Add Lesson</button>
+    <button v-if="edit" @click="add">Add Lesson</button>
     <ul>
       <div v-for="lesson in selectedUnit.lessons" :key="lesson.name">
         <li>
@@ -51,6 +51,16 @@ export default {
   methods: {
     show() {
       this.edit = !this.edit;
+    },
+    add() {
+      this.$router.push({
+        name: "AddLesson",
+        params: {
+          id: this.$store.state.selectedCourse.id,
+          unitSlug: this.selectedUnit.slug,
+          unit: this.selectedUnit,
+        },
+      });
     },
     submit(lesson) {
       const courseId = this.$store.state.selectedCourse.id
