@@ -27,9 +27,10 @@
     <ul>
       <div v-for="lesson in selectedUnit.lessons" :key="lesson.name">
         <li>
-          {{ lesson.name }}
+          <button @click="submit(lesson)">
+            {{ lesson.name }}
+          </button>
         </li>
-        <button v-if="edit">✎</button>
       </div>
     </ul>
   </div>
@@ -52,13 +53,25 @@ export default {
     show() {
       this.edit = !this.edit;
     },
+    submit(lesson) {
+      const courseId = this.$store.state.selectedCourse.id
+      const unitSlug = this.$props.unitSlug
+      const lessonSlug =  lesson.slug
+      this.$router.push({
+        name: "CourseLesson",
+        params: {
+          id: courseId,
+          unitSlug: unitSlug,
+          lessonSlug: lessonSlug,
+          lesson: lesson,
+        },
+      });
+    },
   },
   created() {
-    const units = this.$store.state.selectedCourse.units
-    units.forEach(unit => {
+    this.$store.state.selectedCourse.units.forEach(unit => {
       if (unit.slug === this.$props.unitSlug) {
         this.selectedUnit = unit;
-        console.log(this.selectedUnit);
       }
     });
   },
