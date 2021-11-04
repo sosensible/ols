@@ -37,8 +37,12 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     submit(unit) {
       this.$router.push({
-        name: "UnitPage",
-        params: { unit: unit },
+        name: "CourseUnit",
+        params: {
+          id: this.course.id,
+          unitSlug: unit.slug,
+          canEdit: this.editButton,
+        },
       });
     },
   },

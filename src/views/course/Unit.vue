@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="showEditButton" @click="show">Edit Unit</button>
+    <button v-if="$props.canEdit" @click="show">Edit Unit</button>
     <h2>{{ selectedUnit.name }}</h2>
     <div v-if="edit">
       <div class="form-floating mb-3">
@@ -36,7 +36,7 @@
 </template>
 <script>
 export default {
-  props: ["unit"],
+  props: ["unitSlug", "canEdit"],
   data() {
     return {
       selectedUnit: {
@@ -54,12 +54,13 @@ export default {
     },
   },
   created() {
-    this.selectedUnit = this.$props.unit;
-    const course = this.$store.state.selectedCourse;
-    const user = this.$store.state.user;
-    if (course.creator === user.name) {
-      this.showEditButton = true;
-    }
+    const units = this.$store.state.selectedCourse.units
+    units.forEach(unit => {
+      if (unit.slug === this.$props.unitSlug) {
+        this.selectedUnit = unit;
+        console.log(this.selectedUnit);
+      }
+    });
   },
 };
 </script>

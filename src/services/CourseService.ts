@@ -24,15 +24,18 @@ createServer({
         {
           name: "Getting Started",
           slug: "getting_started",
-          lessons: [{ name: "Lesson One" }, { name: "Lesson Two" }],
+          lessons: [
+            { name: "Lesson One", slug: "lesson_one" },
+            { name: "Lesson Two", slug: "lesson_two" },
+          ],
         },
         {
           name: "text tags",
           slug: "text_tags",
           lessons: [
-            { name: "Lesson One" },
-            { name: "Lesson Two" },
-            { name: "Lesson Three" },
+            { name: "Lesson One", slug: "lesson_one" },
+            { name: "Lesson Two", slug: "lesson_two" },
+            { name: "Lesson Three", slug: "lesson_three" },
           ],
         },
       ],

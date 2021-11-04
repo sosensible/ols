@@ -4,9 +4,9 @@ import Courses from "../views/course/Courses.vue";
 import Home from "../views/WelcomePage.vue";
 import SignIn from "../views/SignIn.vue";
 import MyCourses from "../views/course/MyCourses.vue";
-import CourseListingPage from "../views/course/CourseListingPage.vue";
+import CourseDetails from "../views/course/Details.vue";
 import CourseCreationPage from "../views/course/CourseCreationPage.vue";
-import CourseUnit from "../views/course/CourseUnit.vue";
+import CourseUnit from "../views/course/Unit.vue";
 import EditCourse from "../views/course/EditCourse.vue";
 import EditLesson from "../views/course/EditLesson.vue";
 
@@ -35,13 +35,13 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/course/:id",
-    name: "CoursePage",
+    name: "CourseDetails",
     props: true,
-    component: CourseListingPage,
+    component: CourseDetails,
   },
   {
-    path: "/unit/:slug",
-    name: "UnitPage",
+    path: "/course/:id/:unitSlug",
+    name: "CourseUnit",
     props: true,
     component: CourseUnit,
   },

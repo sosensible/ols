@@ -20,7 +20,10 @@ export default Vue.extend({
   methods: {
     submit() {
       this.$store.dispatch("createCurrentCourse", this.course);
-      this.$router.push("/course/" + this.course.id);
+      this.$router.push({
+        name: "CourseDetails",
+        params: { id: this.course.id },
+      });
     },
   },
 });
