@@ -7,6 +7,7 @@ import MyCourses from "../views/course/MyCourses.vue";
 import CourseListingPage from "../views/course/CourseListingPage.vue";
 import CourseCreationPage from "../views/course/CourseCreationPage.vue";
 import CourseLesson from "../views/course/CourseLesson.vue";
+import EditCourse from "../views/course/EditCourse.vue";
 
 Vue.use(VueRouter);
 
@@ -48,6 +49,11 @@ const routes: Array<RouteConfig> = [
     name: "CourseCreation",
     component: CourseCreationPage,
   },
+  {
+    path: "/editCourse/:id",
+    name: "EditCourseLesson",
+    component: EditCourse,
+  }
 ];
 
 const router = new VueRouter({

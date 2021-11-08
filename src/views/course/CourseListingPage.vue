@@ -4,12 +4,10 @@
     <h1>{{ course.name }}</h1>
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
-    <!-- <p :v-for="lesson in course.lessons">this is a {{ lesson.name }}</p> -->
-    <div
-      class="lessonArray"
-      v-for="lesson in course.lessons"
-      :key="lesson.name"
-    >
+    <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
+      <button v-if="editButton">Add Unit</button>
+    </router-link>
+    <div class="lessonArray" v-for="lesson in course.units" :key="lesson.name">
       <router-link :to="{ name: 'LessonPage', params: { name: lesson.slug } }">
         <p>
           {{ lesson.name }}
@@ -28,17 +26,16 @@ export default {
   data() {
     return {
       course: null,
+      editButton: false,
     };
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   created() {
-    CourseService.getCourse(this.id)
-      .then(({ data }) => {
-        this.course = data.course;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.course = this.$store.state.selectedCourse;
+    const user = this.$store.state.user;
+    if (this.course.creator === user.name) {
+      this.editButton = true;
+    }
   },
 };
 </script>

@@ -2,16 +2,21 @@ import CourseCreationPage from "../../../src/views/course/CourseCreationPage.vue
 import { render, screen } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { setupServer } from "msw/node";
-import { rest } from "msw";
+import axios from "axios";
+import store from "../../../src/store/index";
 
 describe("Entering Course Data", () => {
-  let saveCourseButton, courseNameInput, CourseDescriptionInput;
+  let saveCourseButton, courseNameInput, CourseDescriptionInput, priceInput;
   const setup = () => {
-    render(CourseCreationPage);
+    render(CourseCreationPage, {
+      global: {
+        plugins: [store],
+      },
+    });
     saveCourseButton = screen.queryByRole("button", { name: "Save Course" });
     courseNameInput = screen.queryByLabelText("Name");
     CourseDescriptionInput = screen.queryByLabelText("Description");
+    priceInput = screen.queryByLabelText("Price");
   };
   it("has Create New Course Header", () => {
     setup();
@@ -38,38 +43,44 @@ describe("Entering Course Data", () => {
     setup();
     await userEvent.type(courseNameInput, "HTML Basics");
     await userEvent.type(CourseDescriptionInput, "Html Course Description");
+    await userEvent.type(priceInput, "40");
     expect(saveCourseButton).toBeEnabled();
   });
-  it("does not enable if description is not filled", async () => {
+  it("does not enable if description and priceis not filled", async () => {
     setup();
     await userEvent.type(courseNameInput, "HTML Basics");
     expect(saveCourseButton).toBeDisabled();
   });
-  it("does not enable if name is not filled", async () => {
+  it("does not enable if name and price is not filled", async () => {
     setup();
     await userEvent.type(CourseDescriptionInput, "Html Course Description");
     expect(saveCourseButton).toBeDisabled();
   });
-  it("sends name and description to backend after clicking button", async () => {
-    let requestBody;
-    const server = setupServer(
-      rest.post("/api/courses", (req, res, ctx) => {
-        requestBody = req.body;
-        return res(ctx.status(200));
-      })
-    );
-    server.listen();
+  it("does not enable if name and descrption is not filled", async () => {
     setup();
-    await userEvent.type(courseNameInput, "Html Basics");
+    await userEvent.type(priceInput, "40");
+    expect(saveCourseButton).toBeDisabled();
+  });
+  it("sends name and description to backend after clicking button", async () => {
+    setup();
+    await userEvent.type(courseNameInput, "HTML Advanced");
     await userEvent.type(
       CourseDescriptionInput,
-      "a simple beginners guid to html"
+      "Hyper Text MarkUP Language Advanced"
     );
+    await userEvent.type(priceInput, "40");
+
+    const mockFn = jest.fn();
+    axios.post = mockFn;
+
     await userEvent.click(saveCourseButton);
-    await server.close();
-    expect(requestBody).toEqual({
-      name: "Html Basics",
-      shortDescription: "a simple beginners guid to html",
+
+    const firstCall = mockFn.mock.calls[0];
+    let body = firstCall[1];
+    expect(body).toEqual({
+      name: "HTML Advanced",
+      shortDescription: "Hyper Text MarkUP Language Advanced",
+      price: "40",
     });
   });
 });
