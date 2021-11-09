@@ -19,8 +19,10 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
-    addUnitToSelectedCourse(state, unit) {
-      state.selectedCourse.units.push(unit);
+    updateUnits(state, units) {
+      state.selectedCourse.units = units;
+      console.log(units);
+      console.log(state.selectedCourse.units);
     },
     setCurrentCourse(state, course) {
       state.selectedCourse = course;
@@ -37,15 +39,26 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async addUnitToCourse({ commit }, unit) {
-      //need to add unit to the api
-      console.log("add unit to course action");
-      await commit("addUnitToSelectedCourse", unit);
+    async updateUnit({ commit, state }, unit) {
+      let AlreadyUnits = state.selectedCourse.units;
+      let unitsToAdd = [];
+      let number = 0;
+      for (let int in AlreadyUnits) {
+        if (AlreadyUnits[int].name === unit.name) {
+          number = 1;
+          unitsToAdd.push(unit);
+        } else {
+          unitsToAdd.push(AlreadyUnits[int]);
+        }
+      }
+      if (number != 1) {
+        unitsToAdd.push(unit);
+      }
       axios
-        .patch(
-          "/api/courses/" + this.state.selectedCourse.id,
-          this.state.selectedCourse.units
-        )
+        .patch("/api/courses/" + this.state.selectedCourse.id, unitsToAdd)
+        .then(() => {
+          commit("updateUnits", unitsToAdd);
+        })
         .catch((error) => {
           commit("setError", error);
         });

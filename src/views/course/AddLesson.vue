@@ -33,7 +33,8 @@
   </div>
 </template>
 <script>
-export default {
+import Vue from "vue";
+export default Vue.extend({
   props: ["unit"],
   data() {
     return {
@@ -42,12 +43,37 @@ export default {
         slug: "",
         content: "",
       },
+      lessons: [],
     };
   },
   methods: {
     addLesson() {
-      console.log(this.lesson);
+      if (this.unit.lessons != undefined) {
+        this.lessons.push(this.unit.lessons);
+      }
+      this.lessons.push(this.lesson);
+      const unit = {
+        name: this.unit.name,
+        slug: this.unit.slug,
+        lessons: this.lessons,
+      };
+      if (this.lesson.name != "") {
+        this.$store.dispatch("updateUnit", unit);
+        let editButton = false;
+        const user = this.$store.state.user;
+        if (this.$store.state.selectedCourse.creator === user.name) {
+          editButton = true;
+        }
+        this.$router.push({
+          name: "CourseUnit",
+          params: {
+            id: this.$store.state.selectedCourse.id,
+            unitSlug: this.unit.slug,
+            canEdit: editButton,
+          },
+        });
+      }
     },
   },
-};
+});
 </script>
