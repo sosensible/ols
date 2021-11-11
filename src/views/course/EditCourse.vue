@@ -10,8 +10,8 @@
         v-model="unit.name"
       />
       <label for="unitName">Unit Name</label>
-      <button @click="saveUnit">Save Unit</button>
     </div>
+    <button @click="saveUnit">Save Unit</button>
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     saveUnit() {
       if (this.unit.name != "") {
-        this.$store.dispatch("addUnitToCourse", this.unit);
+        this.$store.dispatch("updateUnit", this.unit);
         this.$router.push("/course/" + this.course.id);
       }
     },

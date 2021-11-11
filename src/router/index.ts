@@ -4,10 +4,12 @@ import Courses from "../views/course/Courses.vue";
 import Home from "../views/WelcomePage.vue";
 import SignIn from "../views/SignIn.vue";
 import MyCourses from "../views/course/MyCourses.vue";
-import CourseListingPage from "../views/course/CourseListingPage.vue";
+import CourseDetails from "../views/course/Details.vue";
 import CourseCreationPage from "../views/course/CourseCreationPage.vue";
-import CourseLesson from "../views/course/CourseLesson.vue";
+import CourseUnit from "../views/course/Unit.vue";
+import CourseLesson from "../views/course/Lesson.vue";
 import EditCourse from "../views/course/EditCourse.vue";
+import AddLesson from "../views/course/AddLesson.vue";
 
 Vue.use(VueRouter);
 
@@ -34,13 +36,19 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/course/:id",
-    name: "CoursePage",
+    name: "CourseDetails",
     props: true,
-    component: CourseListingPage,
+    component: CourseDetails,
   },
   {
-    path: "/lesson/:name",
-    name: "LessonPage",
+    path: "/course/:id/:unitSlug",
+    name: "CourseUnit",
+    props: true,
+    component: CourseUnit,
+  },
+  {
+    path: "/course/:id/:unitSlug/:lessonSlug",
+    name: "CourseLesson",
     props: true,
     component: CourseLesson,
   },
@@ -53,7 +61,13 @@ const routes: Array<RouteConfig> = [
     path: "/editCourse/:id",
     name: "EditCourseLesson",
     component: EditCourse,
-  }
+  },
+  {
+    path: "/course/:id/:unitSlug/addLesson",
+    name: "AddLesson",
+    props: true,
+    component: AddLesson,
+  },
 ];
 
 const router = new VueRouter({
