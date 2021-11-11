@@ -1,6 +1,6 @@
 describe("George second spec test", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:8080/my-courses");
+    cy.visit("http://localhost:2803/my-courses");
   });
   it("has add a course button", () => {
     cy.contains("Create New Course");
