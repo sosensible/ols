@@ -13,7 +13,13 @@
           <label for="password" class="form-label">Password</label>
           <input id="password" v-model="user.password" class="form-control" />
         </div>
-        <button :disabled="false" @click.prevent="setUser">Sign in</button>
+        <button
+          :disabled="false"
+          @click.prevent="setUser"
+          data-testid="sign-in-button"
+        >
+          Sign in
+        </button>
       </div>
     </form>
   </div>
@@ -29,6 +35,12 @@ export default {
         courses: "",
       },
     };
+  },
+  created() {
+    //
+    if (this.$store.state.courses.length == 0) {
+      this.$store.dispatch("createCourses");
+    }
   },
   methods: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
