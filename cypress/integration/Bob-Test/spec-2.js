@@ -1,13 +1,22 @@
-describe("bob spec 2 tests", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:8080/courses");
-  });
-  it("make sure components are there", () => {
-    cy.get('[href="/course/1"] > div');
-  });
-  it("check componet goes to correct page", () => {
-    cy.get('[href="/course/1"] > div').click();
+import { makeServer } from "../../../src/services/CourseService";
 
-    cy.url().should("include", "/1");
+describe("bob spec 2 tests", () => {
+  let server;
+  beforeEach(() => {
+    server = makeServer({ environment: "test" });
+    cy.visit("http://localhost:2803");
+  });
+
+  afterEach(() => {
+    server.shutdown();
+  });
+  it("shows the courses from server", () => {
+    server.create("course", { id: 3, name: "JavaScript" });
+    server.create("course", { id: 4, name: "Bootstrap" });
+
+    cy.contains("Courses").click();
+
+    cy.contains("Bootstrap");
+    cy.contains("JavaScript");
   });
 });
