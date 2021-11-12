@@ -4,7 +4,7 @@
     <h1>{{ course.name }}</h1>
     <h4>Description: {{ course.shortDescription }}</h4>
     <h3>Price: ${{ course.price }}</h3>
-    <router-link :to="{ name: 'EditCourseLesson', params: { id: 4 } }">
+    <router-link :to="{ name: 'EditCourseLesson', params: { id: course.id } }">
       <button v-if="editButton">Add Unit</button>
     </router-link>
     <div v-for="unit in course.units" :key="unit.name">
