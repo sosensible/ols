@@ -21,8 +21,6 @@ export default new Vuex.Store({
     },
     updateUnits(state, units) {
       state.selectedCourse.units = units;
-      console.log(units);
-      console.log(state.selectedCourse.units);
     },
     setCurrentCourse(state, course) {
       state.selectedCourse = course;
