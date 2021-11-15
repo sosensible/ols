@@ -3,12 +3,12 @@ describe("George second spec test", () => {
     cy.visit("http://localhost:2803/my-courses");
   });
   it("has add a course button", () => {
-    cy.contains("Create New Course");
+    cy.get("[data-testid=newCourseButton]");
   });
   it("when button clicks goes to course creation page", () => {
-    cy.get("button").click();
+    cy.get("[data-testid=newCourseButton]").click();
 
     cy.url().should("include", "/new-course");
-    cy.contains("New Course");
+    cy.url().should("include", "new-course");
   });
 });

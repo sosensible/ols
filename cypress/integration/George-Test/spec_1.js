@@ -53,8 +53,8 @@ describe("George spec 1 test", () => {
     cy.url().should("include", "/sign-in")
   });
   it("make sure page contains fields", () => {
-    cy.get("#name");
-    cy.get("#password");
+    cy.get("[data-testid=nameField]");
+    cy.get("[data-testid=passwordField]");
   });
   it("sign in button works", () => {
     cy.get("[data-testid=sign-in-button]").click();

@@ -8,6 +8,7 @@
         class="form-control"
         type="text"
         v-model="lesson.name"
+        data-testid="nameInput"
       />
       <label for="lessonName">Lesson Name</label>
     </div>
@@ -17,6 +18,7 @@
         class="form-control"
         type="text"
         v-model="lesson.slug"
+        data-testid="slugInput"
       />
       <label for="lessonSlug">Lesson Slug</label>
     </div>
@@ -26,10 +28,11 @@
         class="form-control"
         type="text"
         v-model="lesson.content"
+        data-testid="contentInput"
       />
       <label for="lessonContent">Lesson Content</label>
     </div>
-    <button @click="addLesson">Save Lesson</button>
+    <button @click="addLesson" data-testid="saveButton">Save Lesson</button>
   </div>
 </template>
 <script>

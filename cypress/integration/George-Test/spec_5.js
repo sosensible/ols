@@ -49,15 +49,14 @@ describe("George Spec Five Adding Lessons", () => {
     cy.contains("Add Lesson").click();
   });
   it("checks for lesson fields", () => {
-    cy.get("#lessonName");
-    cy.get("#lessonSlug");
-    cy.get("#lessonContent");
+    cy.get("[data-testid=nameInput]");
+    cy.get("[data-testid=slugInput]");
+    cy.get("[data-testid=contentInput]");
   });
   it("types field and saves lesson", () => {
-    cy.get("#lessonName").type("lesson 2");
-    cy.get("#lessonSlug").type("lesson_2");
-    cy.get("#lessonContent").type("lesson 2 content");
-    cy.contains("Save Lesson").click();
-    // cy.containts("lesson 2");
+    cy.get("[data-testid=nameInput]").type("lesson 2");
+    cy.get("[data-testid=slugInput]").type("lesson_2");
+    cy.get("[data-testid=contentInput]").type("lesson 2 content");
+    cy.get("[data-testid=saveButton]").click();
   });
 });

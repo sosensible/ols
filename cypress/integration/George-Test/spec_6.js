@@ -38,7 +38,7 @@ describe("George Spec Six editing main course detail", () => {
 
   const userLogin = (name) => {
     cy.contains("Sign In").click();
-    cy.get("#name").type(name);
+    cy.get("[data-testid=nameField]").type(name);
     cy.get("[data-testid=sign-in-button]").click();
   };
   beforeEach(() => {
@@ -56,7 +56,7 @@ describe("George Spec Six editing main course detail", () => {
   });
   it("checks edit button is not there if not creator logged in", () => {
     userLogin("Duelavin");
-    cy.contains("Edit Course").should("not.exist");
+    cy.get("[data-testid=editButton]").should("not.exist");
   });
   it("has editing fields if editing mode on", () => {
     userLogin("George");
@@ -70,7 +70,7 @@ describe("George Spec Six editing main course detail", () => {
     userLogin("George");
     cy.get(".card").click();
     cy.get("[data-testid=editButton]").click();
-    cy.contains("Add Unit").should("not.exist");
+    cy.get("[data-testid=addUnitButton]").should("not.exist");
     cy.contains("What is JavaScript").should("not.exist");
   });
   it("has save Changes button in course editing mode", () => {

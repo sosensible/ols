@@ -41,7 +41,7 @@
       :to="{ name: 'EditCourseLesson', params: { id: course.id } }"
       v-if="!editingMode"
     >
-      <button v-if="editButton">Add Unit</button>
+      <button v-if="editButton" data-testid="addUnitButton">Add Unit</button>
     </router-link>
     <div v-for="unit in course.units" :key="unit.name">
       <button @click.prevent="submit(unit)" v-if="!editingMode">

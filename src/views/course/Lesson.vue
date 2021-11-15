@@ -9,6 +9,7 @@
         class="form-control"
         type="text"
         v-model="lesson.name"
+        data-testid="nameInput"
       />
       <label for="lessonName">Name</label>
     </div>
@@ -18,6 +19,7 @@
         class="form-control"
         type="text"
         v-model="lesson.slug"
+        data-testid="slugInput"
       />
       <label for="lessonSlug">Slug</label>
     </div>
@@ -27,6 +29,7 @@
         class="form-control"
         type="text"
         v-model="lesson.content"
+        data-testid="content"
       />
       <label for="lessonContent">Lesson Content</label>
     </div>
