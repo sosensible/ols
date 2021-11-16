@@ -8,6 +8,7 @@
         class="form-control"
         type="text"
         v-model="lesson.name"
+        data-testid="nameInput"
       />
       <label for="lessonName">Lesson Name</label>
     </div>
@@ -17,6 +18,7 @@
         class="form-control"
         type="text"
         v-model="lesson.slug"
+        data-testid="slugInput"
       />
       <label for="lessonSlug">Lesson Slug</label>
     </div>
@@ -26,10 +28,11 @@
         class="form-control"
         type="text"
         v-model="lesson.content"
+        data-testid="contentInput"
       />
       <label for="lessonContent">Lesson Content</label>
     </div>
-    <button @click="addLesson">Save Lesson</button>
+    <button @click="addLesson" data-testid="saveButton">Save Lesson</button>
   </div>
 </template>
 <script>
@@ -48,17 +51,9 @@ export default Vue.extend({
   },
   methods: {
     addLesson() {
-      if (this.unit.lessons != undefined) {
-        this.lessons.push(this.unit.lessons);
-      }
-      this.lessons.push(this.lesson);
-      const unit = {
-        name: this.unit.name,
-        slug: this.unit.slug,
-        lessons: this.lessons,
-      };
+      this.unit.lessons.push(this.lesson);
       if (this.lesson.name != "") {
-        this.$store.dispatch("updateUnit", unit);
+        this.$store.dispatch("updateUnit", this.unit);
         let editButton = false;
         const user = this.$store.state.user;
         if (this.$store.state.selectedCourse.creator === user.name) {

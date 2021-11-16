@@ -21,8 +21,9 @@ export default new Vuex.Store({
     },
     updateUnits(state, units) {
       state.selectedCourse.units = units;
-      console.log(units);
-      console.log(state.selectedCourse.units);
+    },
+    updateCourse(state, course) {
+      state.selectedCourse = course;
     },
     setCurrentCourse(state, course) {
       state.selectedCourse = course;
@@ -58,6 +59,17 @@ export default new Vuex.Store({
         .patch("/api/courses/" + this.state.selectedCourse.id, unitsToAdd)
         .then(() => {
           commit("updateUnits", unitsToAdd);
+        })
+        .catch((error) => {
+          commit("setError", error);
+        });
+    },
+    async updateCourse({ commit }) {
+      let course = this.state.selectedCourse;
+      axios
+        .patch("/api/courses/" + course.id, course)
+        .then(() => {
+          commit("updateCourse", course);
         })
         .catch((error) => {
           commit("setError", error);

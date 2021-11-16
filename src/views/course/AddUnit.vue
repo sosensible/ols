@@ -8,10 +8,11 @@
         class="form-control"
         type="text"
         v-model="unit.name"
+        data-testid="unitNameField"
       />
       <label for="unitName">Unit Name</label>
     </div>
-    <button @click="saveUnit">Save Unit</button>
+    <button @click="saveUnit" data-testid="saveButton">Save Unit</button>
   </div>
 </template>
 <script>

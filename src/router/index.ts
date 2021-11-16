@@ -8,7 +8,7 @@ import CourseDetails from "../views/course/Details.vue";
 import CourseCreationPage from "../views/course/CourseCreationPage.vue";
 import CourseUnit from "../views/course/Unit.vue";
 import CourseLesson from "../views/course/Lesson.vue";
-import EditCourse from "../views/course/EditCourse.vue";
+import EditCourse from "../views/course/AddUnit.vue";
 import AddLesson from "../views/course/AddLesson.vue";
 
 Vue.use(VueRouter);
