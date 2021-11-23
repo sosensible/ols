@@ -79,7 +79,7 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     save() {
       this.editingMode = false;
-      this.$store.dispatch("updateCourse", this.unit);
+      this.$store.dispatch("updateCourse", this.course);
     },
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     edit() {

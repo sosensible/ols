@@ -31,7 +31,8 @@ export default {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     saveUnit() {
       if (this.unit.name != "") {
-        this.$store.dispatch("updateUnit", this.unit);
+        this.course.units.push(this.unit);
+        this.$store.dispatch("updateCourse", this.course);
         this.$router.push("/course/" + this.course.id);
       }
     },
