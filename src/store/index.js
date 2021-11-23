@@ -96,8 +96,8 @@ export default new Vuex.Store({
         .post("/api/courses/", {
           course,
         })
-        .then((reponse) => {
-          (course.id = reponse.data.course.id), commit("addCourse", course);
+        .then(({ data }) => {
+          commit("addCourse", data.course);
         })
         .catch((error) => {
           commit("setError", error);

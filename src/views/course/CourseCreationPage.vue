@@ -42,8 +42,7 @@ export default Vue.extend({
         shortDescription: "",
         price: "",
         creator: "",
-        lessons: [],
-        id: 0,
+        units: [],
       },
     };
   },
@@ -51,12 +50,8 @@ export default Vue.extend({
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async submit() {
       this.course.creator = this.$store.state.user.name;
+      console.log(this.course.course);
       this.$store.dispatch("createCourse", this.course);
-      // await axios.post("/api/courses/", {
-      //   name: this.course.name,
-      //   shortDescription: this.course.shortDescription,
-      //   price: this.course.price,
-      // });
       this.$router.push("my-courses");
     },
   },
@@ -69,5 +64,5 @@ export default Vue.extend({
       );
     },
   },
-})
+});
 </script>

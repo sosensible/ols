@@ -88,7 +88,7 @@ createServer({
       price: 30,
       creator: "George",
       units: [
-        { name: "What is HTML", slug: "what_is_html" },
+        { name: "What is HTML", slug: "what_is_html", lessons: [] },
         {
           name: "Getting Started",
           slug: "getting_started",
@@ -130,11 +130,9 @@ createServer({
       const id = request.params.id;
       return schema.courses.find(id);
     });
-    let newId = 4;
     this.post("/api/courses", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
-      attrs.id = newId++;
-      return { course: attrs };
+      return schema.courses.create(attrs.course);
     });
     this.patch("/api/courses/:id", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
