@@ -50,9 +50,11 @@ describe("George spec 4 test", () => {
   });
   it("has unit fields", () => {
     cy.get("[data-testid=unitNameField]").type("Learning Java P1");
+    cy.get("[data-testid=unitSlugField]").type("learning_java_p1");
   });
   it("saves added unit", () => {
     cy.get("[data-testid=unitNameField]").type("Learning Java P1");
+    cy.get("[data-testid=unitSlugField]").type("learning_java_p1");
     cy.get("[data-testid=saveButton]").click();
     cy.contains("Learning Java P1");
   });
