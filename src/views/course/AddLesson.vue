@@ -46,29 +46,37 @@ export default Vue.extend({
         slug: "",
         content: "",
       },
+      course: null,
       lessons: [],
     };
   },
   methods: {
     addLesson() {
-      this.unit.lessons.push(this.lesson);
       if (this.lesson.name != "") {
-        this.$store.dispatch("updateUnit", this.unit);
-        let editButton = false;
-        const user = this.$store.state.user;
-        if (this.$store.state.selectedCourse.creator === user.name) {
-          editButton = true;
+        for (let int in this.course.units) {
+          if (this.course.units[int].name === this.unit.name) {
+            this.course.units[int].lessons.push(this.lesson);
+            this.$store.dispatch("updateCourse", this.course);
+            const user = this.$store.state.user;
+            let editButton = false;
+            if (this.course.creator === user.name) {
+              editButton = true;
+            }
+            this.$router.push({
+              name: "CourseUnit",
+              params: {
+                id: this.course.id,
+                unitSlug: this.unit.slug,
+                canEdit: editButton,
+              },
+            });
+          }
         }
-        this.$router.push({
-          name: "CourseUnit",
-          params: {
-            id: this.$store.state.selectedCourse.id,
-            unitSlug: this.unit.slug,
-            canEdit: editButton,
-          },
-        });
       }
     },
+  },
+  created() {
+    this.course = this.$store.state.selectedCourse;
   },
 });
 </script>

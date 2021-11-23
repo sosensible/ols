@@ -88,7 +88,7 @@ createServer({
       price: 30,
       creator: "George",
       units: [
-        { name: "What is HTML", slug: "what_is_html" },
+        { name: "What is HTML", slug: "what_is_html", lessons: [] },
         {
           name: "Getting Started",
           slug: "getting_started",

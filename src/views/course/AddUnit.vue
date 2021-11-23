@@ -24,6 +24,7 @@ export default {
       unit: {
         name: "",
         slug: "",
+        lessons: [],
       },
     };
   },
