@@ -4,7 +4,10 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/courses">Courses</router-link> |
-      <router-link to="/sign-in">Sign In</router-link>
+      <router-link v-if="$store.state.user.name === ''" to="/sign-in"
+        >Sign In</router-link
+      >
+      <router-link v-else to="/my-courses">My Profile</router-link>
     </div>
     <router-view />
   </div>
