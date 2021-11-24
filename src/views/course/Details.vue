@@ -2,7 +2,7 @@
 <template>
   <div>
     <button v-if="editButton" @click="edit" data-testid="editButton">
-      Edit Course
+      {{ editingMode ? "Cancel" : "Edit Course" }}
     </button>
     <h1>{{ course.name }}</h1>
     <div class="form-floating mb-3" v-if="editingMode">
@@ -39,12 +39,12 @@
     </div>
     <router-link
       :to="{ name: 'EditCourseLesson', params: { id: course.id } }"
-      v-if="!editingMode"
+      v-if="editingMode"
     >
-      <button v-if="editButton" data-testid="addUnitButton">Add Unit</button>
+      <button v-if="editingMode" data-testid="addUnitButton">Add Unit</button>
     </router-link>
     <div v-for="unit in course.units" :key="unit.name">
-      <button @click.prevent="submit(unit)" v-if="!editingMode">
+      <button @click.prevent="submit(unit)">
         {{ unit.name }}
       </button>
     </div>
