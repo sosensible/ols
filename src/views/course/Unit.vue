@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <button @click="backToCourse">Back to course</button>
+    </div>
     <button v-if="$props.canEdit" @click="show">Edit Unit</button>
     <h2>{{ selectedUnit.name }}</h2>
     <div v-if="edit">
@@ -60,6 +63,12 @@ export default {
           unitSlug: this.selectedUnit.slug,
           unit: this.selectedUnit,
         },
+      });
+    },
+    backToCourse() {
+      this.$router.push({
+        name: "CourseDetails",
+        params: { id: this.$store.state.selectedCourse.id },
       });
     },
     submit(lesson) {
