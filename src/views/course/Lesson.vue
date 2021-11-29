@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button @click="backToCourse" >Back To Course</button>
+    <button @click="$router.back()">Back To Unit</button>
     <button v-if="canEdit" @click="changeEdit">Edit Lesson</button>
     <h2>{{ lesson.name }}</h2>
     <p>{{ lesson.content }}</p>
@@ -46,7 +48,13 @@ export default {
   methods: {
     changeEdit() {
       this.editable = !this.editable
-    }
-  }
+    },
+    backToCourse() {
+      this.$router.push({
+        name: "CourseDetails",
+        params: { id: this.$store.state.selectedCourse.id },
+      });
+    },
+  },
 };
 </script>
